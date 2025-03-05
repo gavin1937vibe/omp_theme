@@ -9,7 +9,7 @@
           "type": "os",
           "style": "plain",
           "foreground": "#DD4814",
-          "template": " {{ if .WSL }}WSL at {{ end }}{{.Icon}}"
+          "template": " {{ if .WSL }}WSL at {{ end }}{{.Icon}} "
         },
         {
           "foreground": "red",
@@ -23,6 +23,16 @@
           "type": "session"
         },
         {
+          "foreground": "white",
+          "properties": {
+            "fetch_version": true,
+            "fetch_virtual_env": true
+          },
+          "style": "plain",
+          "template": "({{ if .Error }}{{ .Error }}{{ else }}{{ if .Venv }}{{ .Venv }} {{ end }}{{ .Full }}{{ end }}) ",
+          "type": "python"
+        },
+        {
           "foreground": "lightYellow",
           "properties": {
             "style": "full"
@@ -32,37 +42,10 @@
           "type": "path"
         },
         {
-          "foreground": "white",
-          "properties": {
-            "fetch_version": true,
-            "fetch_virtual_env": true
-          },
-          "style": "plain",
-          "template": "({{ if .Error }}{{ .Error }}{{ else }}{{ if .Venv }}{{ .Venv }} {{ end }}{{ .Full }}{{ end }})",
-          "type": "python"
-        },
-        {
           "foreground": "red",
           "style": "plain",
           "template": " C:{{ if gt .Code 0 }}{{ .Code }}{{ end }} ",
           "type": "status"
-        }
-      ],
-      "type": "prompt"
-    },
-    {
-      "alignment": "right",
-      "segments": [
-        {
-          "type": "executiontime",
-          "style": "plain",
-          "foreground": "#ffffff",
-          "template": " <#fefefe></> {{ .FormattedMs }} ",
-          "properties": {
-            "threshold": 500,
-            "style": "austin",
-            "always_enabled": true
-          }
         }
       ],
       "type": "prompt"
