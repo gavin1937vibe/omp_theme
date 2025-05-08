@@ -23,6 +23,16 @@
           "type": "session"
         },
         {
+          "type": "git",
+          "style": "plain",
+          "template": "{{ .HEAD }} ",
+          "foreground": "#9ACD32",
+          "properties": {
+            "fetch_status": false,
+            "fetch_upstream_icon": false
+          }
+        },
+        {
           "foreground": "white",
           "properties": {
             "fetch_version": true,
