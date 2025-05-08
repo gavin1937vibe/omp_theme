@@ -2,6 +2,7 @@
   "$schema": "https://raw.githubusercontent.com/JanDeDobbeleer/oh-my-posh/main/themes/schema.json",
   "blocks": [
     {
+      "type": "prompt",
       "alignment": "left",
       "newline": true,
       "segments": [
@@ -12,72 +13,71 @@
           "template": " {{ if .WSL }}WSL at {{ end }}{{.Icon}} "
         },
         {
+          "type": "root",
           "foreground": "red",
           "style": "plain",
-          "template": " % ",
-          "type": "root"
+          "template": " % "
         },
         {
+          "type": "session",
           "style": "plain",
-          "template": "<cyan> {{ .UserName }}</> ",
-          "type": "session"
+          "template": "<cyan> {{ .UserName }}</> "
+        },
+        {
+          "type": "path",
+          "foreground": "lightYellow",
+          "properties": {
+            "style": "full"
+          },
+          "style": "plain",
+          "template": "<darkGray>@ </>{{ .Path }} "
         },
         {
           "type": "git",
           "style": "plain",
-          "template": "{{ .HEAD }} ",
-          "foreground": "#9ACD32",
+          "template": "({{ .HEAD }})",
+          "foreground": "#FFA500",
           "properties": {
             "fetch_status": false,
             "fetch_upstream_icon": false
           }
         },
         {
+          "type": "status",
+          "foreground": "#FF0F0F",
+          "style": "plain",
+          "template": " C:{{ if gt .Code 0 }}{{ .Code }}{{ end }} "
+        }
+      ]
+    },
+    {
+      "type": "prompt",
+      "alignment": "left",
+      "newline": true,
+      "segments": [
+        {
+          "type": "time",
           "foreground": "white",
+          "style": "plain",
+          "template": "[{{ .CurrentDate | date .Format }}]"
+        },
+        {
+          "type": "python",
+          "foreground": "#0277BD",
           "properties": {
             "fetch_version": true,
             "fetch_virtual_env": true
           },
           "style": "plain",
-          "template": "({{ if .Error }}{{ .Error }}{{ else }}{{ if .Venv }}{{ .Venv }} {{ end }}{{ .Full }}{{ end }}) ",
-          "type": "python"
+          "template": " {{ if .Error }}{{ .Error }}{{ else }}{{ if .Venv }} {{ .Venv }}{{ end }}{{ end }}"
         },
         {
-          "foreground": "lightYellow",
-          "properties": {
-            "style": "full"
-          },
-          "style": "plain",
-          "template": "<darkGray>in </>{{ .Path }} ",
-          "type": "path"
-        },
-        {
-          "foreground": "red",
-          "style": "plain",
-          "template": " C:{{ if gt .Code 0 }}{{ .Code }}{{ end }} ",
-          "type": "status"
-        }
-      ],
-      "type": "prompt"
-    },
-    {
-      "alignment": "left",
-      "newline": true,
-      "segments": [
-        {
-          "foreground": "white",
-          "style": "plain",
-          "template": "[{{ .CurrentDate | date .Format }}]",
-          "type": "time"
-        },
-        {
+          "type": "text",
           "foreground": "green",
           "style": "plain",
-          "template": " $",
-          "type": "text"
+          "template": " $"
         }
-      ],
-      "type": "prompt"
+      ]
     }
   ],
   "final_space": true,
